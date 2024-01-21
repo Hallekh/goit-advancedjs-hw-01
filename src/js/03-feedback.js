@@ -24,10 +24,18 @@ function restoreFormState() {
   }
 }
 
+// Валідація форми
+function validateForm() {
+  return emailInput.value.trim() !== '' && messageInput.value.trim() !== '';
+}
+
 // Отримання даних форми та очищення локального сховища при сабміті
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
+  if (!validateForm()) {
+    return alert('please enter email and message');
+  }
   const formData = {
     email: emailInput.value,
     message: messageInput.value,
